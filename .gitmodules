@@ -1,0 +1,6 @@
+[submodule "api-sisedu"]
+	path = api-sisedu
+	url = https://bitbucket.org/oliveirarrafael/api-sisedu.git
+[submodule "web-sisedu"]
+	path = web-sisedu
+	url = https://bitbucket.org/oliveirarrafael/web-sisedu.git

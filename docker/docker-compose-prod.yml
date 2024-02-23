@@ -1,0 +1,46 @@
+version: "3.7"
+
+services:
+  api-sisedu:
+    build:
+      context: ../api-sisedu
+      dockerfile: Dockerfile
+    image: api-sisedu:latest
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_PROFILES_ACTIVE=${ENV}
+      - SPRING_DATASOURCE_URL=${DB_URL_JDBC}
+      - SPRING_DATASOURCE_USERNAME=${DB_USERNAME}
+      - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
+      - SPRING_DATASOURCE_TESTWHILEIDLE=true
+      - SPRING_DATASOURCE_VALIDATIONQUERY=SELECT 1
+      - SPRING_DATASOURCE_JPA_DATABASEPLATFORM=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_JPA_SHOW_SQL=true
+      - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
+    networks:
+      - postgres_network
+  web-sisedu:
+    build:
+      context: ../web-sisedu
+      dockerfile: Dockerfile
+    image: web-sisedu:latest
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+        reservations:
+          cpus: '0.10'
+          memory: 128M
+    ports:
+      - 4200:4200
+    environment:
+      - API_URL=http://localhost:8080
+    depends_on:
+      - api-sisedu

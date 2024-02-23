@@ -1,0 +1,71 @@
+version: "3.7"
+
+services:
+    sisedu_db:
+      image: postgres
+      container_name: db-sisedu-local
+      ports:
+        - 5432:5432
+      environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_DB=sisedu
+      volumes:
+        - postgresql_data:/var/lib/postgresql/data
+        - ../scripts/banco-dados/ddl/estudante.sql:/docker-entrypoint-initdb.d/_11.sql
+        - ../scripts/banco-dados/ddl/dominio.sql:/docker-entrypoint-initdb.d/_12.sql
+        - ../scripts/banco-dados/ddl/rotina.sql:/docker-entrypoint-initdb.d/_13.sql
+        - ../scripts/banco-dados/ddl/turma.sql:/docker-entrypoint-initdb.d/_15.sql
+        - ../scripts/banco-dados/ddl/formularios.sql:/docker-entrypoint-initdb.d/_16.sql
+        - ../scripts/banco-dados/dml/insert/insert-tipo-responsavel.sql:/docker-entrypoint-initdb.d/_21.sql
+        - ../scripts/banco-dados/dml/insert/insert-escola.sql:/docker-entrypoint-initdb.d/_22.sql
+        - ../scripts/banco-dados/dml/insert/insert-estado.sql:/docker-entrypoint-initdb.d/_23.sql
+        - ../scripts/banco-dados/dml/insert/insert-cidade.sql:/docker-entrypoint-initdb.d/_24.sql
+        - ../scripts/banco-dados/dml/insert/insert-bairro.sql:/docker-entrypoint-initdb.d/_25.sql
+        - ../scripts/banco-dados/dml/insert/insert-sub-bairro.sql:/docker-entrypoint-initdb.d/_26.sql
+        - ../scripts/banco-dados/dml/insert/insert-nivel.sql:/docker-entrypoint-initdb.d/_27.sql
+        - ../scripts/banco-dados/dml/insert/insert-status-periodo-letivo.sql:/docker-entrypoint-initdb.d/_28.sql
+        - ../scripts/banco-dados/dml/insert/insert-tipo-indicacao.sql:/docker-entrypoint-initdb.d/_29.sql
+      networks:
+        - postgres_network
+
+    api-sisedu:
+      build:
+        context: ../api-sisedu
+        dockerfile: Dockerfile
+      image: api-sisedu:latest
+      ports:
+        - 8080:8080
+      environment:
+        - SPRING_PROFILES_ACTIVE=local
+        - SPRING_DATASOURCE_URL=jdbc:postgresql://sisedu_db:5432/sisedu
+        - SPRING_DATASOURCE_USERNAME=postgres
+        - SPRING_DATASOURCE_PASSWORD=postgres
+        - SPRING_DATASOURCE_TESTWHILEIDLE=true
+        - SPRING_DATASOURCE_VALIDATIONQUERY=SELECT 1
+        - SPRING_DATASOURCE_JPA_DATABASEPLATFORM=org.hibernate.dialect.PostgreSQLDialect
+        - SPRING_JPA_SHOW_SQL=true
+        - SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL=true
+      networks:
+        - postgres_network
+      depends_on:
+        - sisedu_db
+
+    web-sisedu:
+      build:
+        context: ../web-sisedu
+        dockerfile: Dockerfile
+      image: web-sisedu:latest
+      ports:
+        - 4200:4200
+      environment:
+        - API_URL=http://localhost:8080
+      networks:
+        - postgres_network
+      depends_on:
+        - api-sisedu
+volumes:
+    postgresql_data:
+networks: 
+    postgres_network:
+      driver: bridge
