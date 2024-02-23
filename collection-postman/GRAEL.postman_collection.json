@@ -1,0 +1,530 @@
+{
+	"info": {
+		"_postman_id": "4aed6de3-9a13-4585-b653-8847c8763185",
+		"name": "GRAEL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Estudante",
+			"item": [
+				{
+					"name": "Cadastrar dados opcionais",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Joao\",\n    \"sobrenome\": \"da Silva\",\n    \"nomeSocial\": \"Teste\",\n    \"cpf\": \"863.571.640-03\",\n    \"sexo\": \"M\",\n    \"dataNascimento\": \"18/04/2000\",\n    \"naturalidade\": \"Rio de Janeiro\",\n    \"localNascimento:\": \"Niterói-RJ\",\n    \"nacionalidade\": \"Brasileiro(A)\",\n    \"corEtnia\": \"Negro\",\n    \"numeroRg\": \"1123014012\",\n    \"dataEmissaoRg\": \"01/06/2016\",\n    \"orgaoExpedidorRg\": \"DETRAN-RJ\",\n    \"endereco\": {\n        \"logradouro\": \"Rua B\",\n        \"numero\": 1,\n        \"complemento\": \"Apto 201\",\n        \"bairro\": \"Madureira\",\n        \"subBairro\": \"Serrinha\",\n        \"cidade\": \"Niterói\",\n        \"estado\": \"RJ\",\n        \"cep\": \"22741-410\"\n    },\n    \"contatos\": [\n        {\n          \"contato\": \"(21) 98122-4785\",\n          \"pertence\": \"Ao tio do Joao\",\n          \"tipo\": \"Celular\"\n        },\n        {\n          \"contato\": \"joao@email.com\",\n          \"pertence\": \"Email do joao\",\n          \"tipo\": \"E-mail\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_LOCAL}}/estudante",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"estudante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar dados obrigatorios",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Joaquim\",\n    \"sobrenome\": \"Juvenal\",\n    \"sexo\": \"M\", \n    \"dataNascimento\": \"18/04/1999\",\n    \"endereco\":{\n           \"logradouro\": \"Rua A\",\n           \"numero\": 150,\n           \"bairro\": \"Icaraí\",\n           \"cidade\": \"Niterói\",\n           \"estado\": \"RJ\",\n           \"cep\": \"22741-410\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_LOCAL}}/estudante",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"estudante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Estudante",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/estudante/f423c080-cf1e-42b7-8b81-d9c7a2649c36",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"estudante",
+								"f423c080-cf1e-42b7-8b81-d9c7a2649c36"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/estudante/b5a0aa21-44e5-4a1e-a0fc-c15f62835d46",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"estudante",
+								"b5a0aa21-44e5-4a1e-a0fc-c15f62835d46"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Parcial por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/estudante/89e9c5ce-ae2f-4270-b679-14b6f791c380/parcial",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estudante",
+								"89e9c5ce-ae2f-4270-b679-14b6f791c380",
+								"parcial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Checklist por ID Estudante",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/estudante/89e9c5ce-ae2f-4270-b679-14b6f791c380/checklist-documentacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estudante",
+								"89e9c5ce-ae2f-4270-b679-14b6f791c380",
+								"checklist-documentacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Checklist por ID Estudante",
+					"request": {
+						"method": "Put",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/estudante/89e9c5ce-ae2f-4270-b679-14b6f791c380/checklist-documentacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"estudante",
+								"89e9c5ce-ae2f-4270-b679-14b6f791c380",
+								"checklist-documentacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Joao\",\n    \"sobrenome\": \"da Silva\",\n    \"cpf\": \"120.548.640-85\",\n    \"sexo\": \"M\",\n    \"email\": \"joao@email.com\",\n    \"dataNascimento\": \"18/04/2015\",\n    \"naturalidade\": \"Rio de Janeiro\",\n    \"telefoneResidencial\": \"(21) 2443-7451\",\n    \"celular\": \"(21) 98122-4785\",\n    \"nacionalidade\": \"Brasileiro(A)\",\n    \"corOuEtnia\": \"Negro\",\n    \"numeroRG\": \"112301400\",\n    \"dataEmissaoRG\": \"01/06/2016\",\n    \"orgaoExpedidorRG\": \"DETRAN-RJ\",\n    \"endereco\": {\n        \"logradouro\": \"Rua B\",\n        \"numero\": 1,\n        \"complemento\": null,\n        \"bairro\": \"Madureira\",\n        \"subBairro\": null,\n        \"cidade\": \"Niterói\",\n        \"estado\": \"Rio de Janeiro\",\n        \"uf\": \"RJ\",\n        \"cep\": \"22741-410\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_LOCAL}}/estudante/89e9c5ce-ae2f-4270-b679-14b6f791c380",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"estudante",
+								"89e9c5ce-ae2f-4270-b679-14b6f791c380"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar todos estudantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/estudante",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"estudante"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Helper",
+			"item": [
+				{
+					"name": "Buscar todos Estados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/helper/endereco/estado",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"helper",
+								"endereco",
+								"estado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar as Cidades do Estado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/helper/endereco/estado/1/cidade",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"helper",
+								"endereco",
+								"estado",
+								"1",
+								"cidade"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar os Bairros da Cidade",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/helper/endereco/cidade/1/bairro",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"helper",
+								"endereco",
+								"cidade",
+								"1",
+								"bairro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar os Sub-Bairros do Bairro",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/helper/endereco/bairro/1/sub-bairro",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"helper",
+								"endereco",
+								"bairro",
+								"1",
+								"sub-bairro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar Local de Nascimento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/helper/local-nascimento",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"helper",
+								"local-nascimento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar os dados agendamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/helper/data-hora",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"helper",
+								"data-hora"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar todos Status Projeto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/helper/status-projeto",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"helper",
+								"status-projeto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Situação no Projeto",
+			"item": [
+				{
+					"name": "Incluir na Situação no Projeto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"Ingressante\",\r\n    \"anoIngresso\": 2022\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_LOCAL}}/estudante/85b79562-8f4b-4794-a668-9fa5f213423f/situacao-projeto",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"estudante",
+								"85b79562-8f4b-4794-a668-9fa5f213423f",
+								"situacao-projeto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rotina",
+			"item": [
+				{
+					"name": "Buscar todos os tipos de jobs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/tipo-rotina",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"tipo-rotina"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Rotina",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Rotina da Situação no Projeto\",\r\n    \"tipoRotina\": {\r\n        \"nome\": \"Situação no Projeto\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_LOCAL}}/rotina",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"rotina"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Agendar Situação no Projeto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"periodo\": {\r\n        \"minuto\": \"50\",\r\n        \"hora\": \"14\",\r\n        \"diaMes\": \"5\",\r\n        \"mes\": \"Abril\"\r\n    },\r\n    \"tarefaSituacaoProjeto\": {\r\n        \"statusAtual\": \"Ingressante\",\r\n        \"proximoStatus\": \"Evadido\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_LOCAL}}/rotina/92970e91-f87f-4efa-932c-4fe20e133e95/agendamento",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"rotina",
+								"92970e91-f87f-4efa-932c-4fe20e133e95",
+								"agendamento"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desativar Rotina",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/rotina/agendamento/66/desativado",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"rotina",
+								"agendamento",
+								"66",
+								"desativado"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ativar Rotina",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_LOCAL}}/rotina/agendamento/66/ativado",
+							"host": [
+								"{{API_LOCAL}}"
+							],
+							"path": [
+								"rotina",
+								"agendamento",
+								"66",
+								"ativado"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "API_LOCAL",
+			"value": "localhost:8080/api"
+		}
+	]
+}

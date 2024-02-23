@@ -1,0 +1,16 @@
+INSERT INTO bairro (nome, id_cidade)
+VALUES  ('Icaraí', 2),
+        ('Jurujuba', 2),
+        ('Pendotiba', 2),
+        ('Ititioca', 2),
+        ('Charitas', 2),
+        ('Itaipuaçu', 2),
+        ('Centro', 2),
+        ('Rio do Ouro', 2),
+        ('Barreto', 2),
+        ('Cantagalo', 2),
+        ('Santa Bárbara', 2),
+        ('Fonseca', 2),
+        ('Ilha do Governador', 1),
+        ('Vista Alegre', 1),
+        ('Madureira', 1);
